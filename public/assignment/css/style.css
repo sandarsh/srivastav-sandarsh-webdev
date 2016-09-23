@@ -1,7 +1,17 @@
+/*
 input.form-control {
     margin-bottom: 5px;
 }
-
+*/
 body {
-    padding-top: 36px;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.navbar-custom{
+    background-color: #428BCA;
+}
+
+.navbar-text-custom{
+    color: white;
 }
