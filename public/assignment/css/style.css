@@ -3,15 +3,108 @@ input.form-control {
     margin-bottom: 5px;
 }
 */
+
+
 body {
-    padding-top: 70px;
+    padding-top: 50px;
     padding-bottom: 70px;
 }
 
 .navbar-custom{
-    background-color: #428BCA;
+    background-color:#337ab7;
 }
 
 .navbar-text-custom{
     color: white;
+    text-decoration: none;
+}
+
+
+
+.body-text-custom{
+    color: #337ab7;
+    text-decoration: none
+}
+
+.table > tbody > tr:first-child > td {
+    border: none;
+}
+
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+    border: none;
+
+}
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: 0px;
+}
+
+.container {
+    width: 100%;
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navbar-brand {
+    padding: 15px 15px 15px 5px;
+}
+
+.row {
+    margin-left: -10px;
+}
+
+.navbar-text {
+    float: left;
+    margin-right: 7px;
+    margin-left: 0px;
+}
+
+.body-row{
+    margin-top: 20px;
+}
+
+.container-fluid {
+    padding-left: 0px;
+}
+
+.table-borderless tbody tr td a{
+    text-decoration: none;
+}
+
+a a:hover {
+    text-decoration: none;
+}
+textarea{
+    resize: vertical;
+}
+
+.navbar-brand-custom{
+    margin-left: 5px;
+}
+
+
+.plus-navbar-text {
+    margin-right: 10px;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.overlay{
+    border-bottom: 0px;
+    border-top: 0px;
+    position: fixed;
+    border-right: 1px solid gray;
+    width: 33.333%;
+    height: 100%;
+    z-index: 1000;
+}
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: 10px;
+}
+
+a:focus, a:hover {
+    color: #23527c;
+    text-decoration: none;
 }

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
+    <link href="css/style.css" rel="stylesheet"/>
+    <title>Website-edit</title>
+</head>
+<body>
+
+<div class="overlay hidden-sm hidden-xs visible-md visible-lg">
+
+</div>
+
+<nav class="navbar navbar-defaul navbar-fixed-top navbar-custom">
+    <div class="container-fluid">
+        <div class="row">
+
+
+            <!--section visible in the landscape mode-->
+            <div class="col-md-4 col-lg-4 hidden-xs hidden-sm visible-md visible-lg">
+
+                <!--Back Button-->
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 navbar-text">
+                    <a href="website-list.html" class="navbar-text-custom glyphicon glyphicon-chevron-left">
+                    </a>
+                </div>
+
+                <!--Navbar header -->
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 navbar-brand">
+                        <span class="navbar-text-custom">
+                        Websites
+                        </span>
+                </div>
+
+                <!--Plus icon-->
+                <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
+                    <a class="navbar-text-custom plus-navbar-text glyphicon glyphicon-plus">
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="col-md-8 col-lg-8">
+
+
+                <!--section always visible-->
+                <div class="col-xs-10 col-sm-10 col-md-11 col-lg-11">
+
+                    <!--Back Button-->
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 navbar-text visible-xs visible-sm hidden-md hidden-lg">
+                        <a href="website-list.html" class="navbar-text-custom glyphicon glyphicon-chevron-left">
+                        </a>
+                    </div>
+
+                    <!--Navbar header -->
+                    <div class="col-xs-9 col-sm-9 col-md-10 col-lg-10 navbar-brand">
+                        <span class="navbar-text-custom">
+                        Edit Website
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Plus icon -->
+                <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
+                    <p class="navbar-text navbar-link pull-right">
+                        <a href="website-list.html" class="navbar-text-custom glyphicon glyphicon-ok">
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+
+
+
+            <!--Row closes-->
+        </div>
+    </div>
+</nav>
+
+
+<!--Name and description of the new website-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 col-lg-4 hidden-sm hidden-xs">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 body-row">
+                <table class="table table-borderless">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a href="page-list.html" class="body-text-custom">Address Book App</a>
+                        </td>
+                        <td>
+                            <a href="website-edit.html" class="glyphicon glyphicon-cog pull-right body-text-custom"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="page-list.html" class="body-text-custom">Blogger</a>
+                        </td>
+                        <td>
+                            <a href="website-edit.html" class="glyphicon glyphicon-cog pull-right body-text-custom"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="page-list.html" class="body-text-custom">Blogging App</a>
+                        </td>
+                        <td>
+                            <a href="website-edit.html" class="glyphicon glyphicon-cog pull-right body-text-custom"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="page-list.html" class="body-text-custom">Script Testing App</a>
+                        </td>
+                        <td>
+                            <a href="website-edit.html" class="glyphicon glyphicon-cog pull-right body-text-custom"></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+
+
+        <div class="col-md-8 col-lg-8">
+            <!--Body section that is always visible-->
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 body-row">
+                <form>
+                    <div class="form-group">
+                        <label for="username">Website Name</label>
+                        <input type="text" class="form-control btn-block btn-lg" id="username"
+                               placeholder="Website name">
+                    </div>
+                    <div class="form-group">
+                        <label for="Description">Website Description</label>
+                        <textarea rows="4" class="form-control btn-block btn-lg" id="Description"
+                                  placeholder="Enter website description"></textarea>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <a href="website-list.html" class="btn btn-danger btn-lg btn-block">
+                            Delete Page
+                        </a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!--Navigation bar bottom-->
+<nav class="navbar navbar-default navbar-fixed-bottom navbar-custom">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-10 col-sm-10 col-md-11 col-lg-11">
+
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
+                <p class="navbar-text navbar-link pull-right">
+                    <a href="profile.html" class="navbar-text-custom glyphicon glyphicon-user">
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>
