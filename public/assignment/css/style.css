@@ -104,7 +104,7 @@ textarea{
     margin-left: 10px;
 }
 
-a:focus, a:hover {
-    color: #23527c;
+.navbar a:focus, .navbar a:hover {
+    color: white;
     text-decoration: none;
 }
