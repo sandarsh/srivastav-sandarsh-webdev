@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Profile</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
-    <link href="css/style.css" rel="stylesheet"/>
-</head>
-<body>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/bodystyle.css">
 <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
     <div class="container-fluid">
         <div class="row">
@@ -21,7 +12,7 @@
             </div>
             <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
                 <p class="navbar-text navbar-link pull-right">
-                    <a href="profile.html" class="navbar-text-custom glyphicon glyphicon-ok">
+                    <a ng-click="model.updateUser(model.id, model.username, model.email, model.firstname, model.lastname)" class="navbar-text-custom glyphicon glyphicon-ok">
                     </a>
                 </p>
             </div>
@@ -34,28 +25,28 @@
             <form>
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" class="form-control btn-block btn-lg" id="username"
-                           placeholder="alicewonderland">
+                    <input ng-model = "model.username" type="text" class="form-control btn-block btn-lg" id="username"
+                           placeholder="alice">
                 </div>
                 <div class="form-group">
                     <label for="email">Email address</label>
                     <input type="email" class="form-control btn-block btn-lg" id="email"
-                           placeholder="alice@wonderland.com">
+                           placeholder="alice@wonderland.com" ng-model="model.email">
                 </div>
                 <div class="form-group">
                     <label for="first-name">First Name</label>
-                    <input type="text" class="form-control btn-block btn-lg" id="first-name" placeholder="Alice">
+                    <input ng-model = "model.firstname" type="text" class="form-control btn-block btn-lg" id="first-name" placeholder="Alice">
                 </div>
                 <div class="form-group">
                     <label for="last-name">Last Name</label>
-                    <input type="text" class="form-control btn-block btn-lg" id="last-name" placeholder="Wonderland">
+                    <input ng-model = "model.lastname" type="text" class="form-control btn-block btn-lg" id="last-name" placeholder="Wonderland">
                 </div>
             </form>
             <br>
             <a class="btn btn-primary btn-block btn-lg"
-               href="website-list.html">Websites</a>
+               href="#/user/{{model.id}}/website">Websites</a>
             <a class="btn btn-danger btn-block btn-lg"
-               href="login.html">Logout</a>
+               href="#/">Logout</a>
         </div>
     </div>
 </div>
@@ -67,13 +58,10 @@
             </div>
             <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
                 <p class="navbar-text navbar-link pull-right">
-                    <a href="profile.html" class="navbar-text-custom glyphicon glyphicon-user">
+                    <a href="#/user/{{model.id}}" class="navbar-text-custom glyphicon glyphicon-user">
                     </a>
                 </p>
             </div>
         </div>
     </div>
 </nav>
-
-</body>
-</html>

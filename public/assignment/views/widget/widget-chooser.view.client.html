@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="css/style-v2.css">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <a href="#/user/{{model.id}}/website/{{model.wid}}/page/{{model.pid}}/widget" class="glyphicon glyphicon-chevron-left navbar-text">
+            </a>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+    <span class="navbar-brand">
+        Choose Widget
+    </span>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+
+        <!--Dummy list of websites-->
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <table class="table table-borderless">
+                <tbody>
+                <tr>
+                    <td>
+                        <a href="#/user/{{model.id}}/website/{{model.wid}}/page/{{model.pid}}/widget/new/header" class="body-text-custom">Header</a></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a href="#/user/{{model.id}}/website/{{model.wid}}/page/{{model.pid}}/widget/new/html" class="body-text-custom" ng-click="model.makePage(html)">HTML</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#/user/{{model.id}}/website/{{model.wid}}/page/{{model.pid}}/widget/new/image" class="body-text-custom" ng-click="model.makePage(image)">Image</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="#/user/{{model.id}}/website/{{model.wid}}/page/{{model.pid}}/widget/new/youtube" class="body-text-custom" ng-click="model.makePage(youtube)">Youtube</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom navbar custom">
+    <div class="container-fluid">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+    <span class="navbar-brand">
+    </span>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <a href="#/user/{{model.id}}" class="glyphicon glyphicon-user navbar-text pull-right">
+
+            </a>
+        </div>
+    </div>
+</nav>

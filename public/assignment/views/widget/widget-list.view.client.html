@@ -1,0 +1,121 @@
+<link rel="stylesheet" href="css/style-v2.css">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <a href="#/user/{{model.id}}/website/{{model.wid}}/page"
+               class="glyphicon glyphicon-chevron-left navbar-text">
+            </a>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+    <span class="navbar-brand">
+        Widgets
+    </span>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <a href="#/user/{{model.id}}/website/{{model.wid}}/page/{{model.pid}}/widget/new"
+               class="glyphicon glyphicon-plus navbar-text pull-right">
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div ng-repeat="widget in model.widgets">
+     <div class="right-cog">
+        <a href="#/user/{{model.id}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}" class="pull-right"> 
+            <span class="glyphicon glyphicon-cog pull-right">
+            </span> </a> 
+        <!--<span href="" class="glyphicon glyphicon-menu-hamburger"> </span> -->
+    </div>
+
+        <div ng-switch="widget.widgetType">
+            <div ng-switch-when="HEADER">
+                <div class="row">
+                    <div class="parent jumbotron">
+                        <div class="content"> 
+                            <p><strong>{{widget.text}}</strong></p> 
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div ng-switch-when="IMAGE">
+                <div class="row">
+                    <div class="parent jumbotron">
+                        <div class="content img-center">
+                            <img class="img-rounded img-fluid" ng-src="{{widget.url}}" width="50%"/>
+                        </div>
+                        <!--<div class="icons"> -->
+                            <!--<a href="#/user/{{model.id}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}" class="glyphicon glyphicon-cog">  </a> -->
+                            <!--<span href="#" class="glyphicon glyphicon-menu-hamburger"> </span> -->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+
+
+            <div ng-switch-when="HTML" ng-bind-html="model.checkSafeHtml(widget.text)">
+            </div>
+
+            <div ng-switch-when="YOUTUBE">
+                <div class="row">
+                    <div class="parent jumbotron">
+                        <div class="embed-responsive embed-responsive-4by3">
+                            <iframe class="embed-responsive-item" ng-src="{{model.transform(widget.url)}}">
+                            </iframe>
+                        </div>
+                        <!--<div class="icons"> -->
+                            <!--<a href="#/user/{{model.id}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}" class="glyphicon glyphicon-cog">  </a> -->
+                            <!--<span href="#" class="glyphicon glyphicon-menu-hamburger"> </span> -->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+
+            <div ng-switch-default>
+                <div class="row">
+                    <div class="parent jumbotron">
+                        <div class="content"> 
+                            <p>
+                                <small>
+                                    {{widget.text}}
+                                </small>
+                            </p>
+                             
+                        </div>
+                        <!--<div class="icons"> -->
+                            <!--<a href="#/user/{{model.id}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}" class="glyphicon glyphicon-cog">  </a> -->
+                            <!--<span href="#" class="glyphicon glyphicon-menu-hamburger"> </span> -->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom navbar custom">
+    <div class="container-fluid">
+        <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <a href="#" class="glyphicon glyphicon-play navbar-text">
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <a href="#" class="glyphicon glyphicon-eye-open navbar-text">
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
+    <span class="navbar-brand">
+    </span>
+        </div>
+
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <a href="#/user/{{model.id}}" class="glyphicon glyphicon-user navbar-text pull-right">
+
+            </a>
+        </div>
+    </div>
+</nav>

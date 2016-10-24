@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
-    <link href="css/style.css" rel="stylesheet"/>
-    <title>Website-new</title>
-</head>
-<body>
+<link rel="stylesheet" href="css/style.css">
 <div class="overlay hidden-sm hidden-xs visible-md visible-lg">
 </div>
 <nav class="navbar navbar-defaul navbar-fixed-top navbar-custom">
@@ -19,7 +8,7 @@
             <div class="col-md-4 col-lg-4 hidden-xs hidden-sm visible-md visible-lg">
                 <!--Back Button-->
                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 navbar-text">
-                    <a href="website-list.html" class="navbar-text-custom glyphicon glyphicon-chevron-left">
+                    <a href="#/user/{{model.id}}/website" class="navbar-text-custom glyphicon glyphicon-chevron-left">
                     </a>
                 </div>
                 <!--Navbar header -->
@@ -30,7 +19,7 @@
                 </div>
                 <!--Plus icon-->
                 <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
-                    <a href="website-new.html" class="navbar-text-custom plus-navbar-text glyphicon glyphicon-plus">
+                    <a href="#/user/{{model.id}}/website/new" class="navbar-text-custom plus-navbar-text glyphicon glyphicon-plus">
                     </a>
                 </div>
             </div>
@@ -39,7 +28,7 @@
                 <div class="col-xs-10 col-sm-10 col-md-11 col-lg-11">
                     <!--Back Button-->
                     <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 navbar-text visible-xs visible-sm hidden-md hidden-lg">
-                        <a href="website-list.html" class="navbar-text-custom glyphicon glyphicon-chevron-left">
+                        <a href="#/user/{{model.id}}/website" class="navbar-text-custom glyphicon glyphicon-chevron-left">
                         </a>
                     </div>
                     <!--Navbar header -->
@@ -52,7 +41,7 @@
                 <!-- Plus icon -->
                 <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
                     <p class="navbar-text navbar-link pull-right">
-                        <a href="website-list.html" class="navbar-text-custom glyphicon glyphicon-ok">
+                        <a href="#/user/{{model.id}}/website" ng-click="model.newWebsite(model.id, model.website.name, model.website.description)" class="navbar-text-custom glyphicon glyphicon-ok">
                         </a>
                     </p>
                 </div>
@@ -68,36 +57,12 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 body-row">
                 <table class="table table-borderless">
                     <tbody>
-                    <tr>
+                    <tr ng-repeat="website in model.websites">
                         <td>
-                            <a href="website-list.html" class="body-text-custom">Address Book App</a>
+                            <a href="#/user/{{model.id}}/website/{{website._id}}/page" class="body-text-custom">{{website.name}}</a>
                         </td>
                         <td>
-                            <a href="website-edit.html" class="glyphicon glyphicon-cog pull-right body-text-custom"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="website-list.html" class="body-text-custom">Blogger</a>
-                        </td>
-                        <td>
-                            <a href="website-edit.html" class="glyphicon glyphicon-cog pull-right body-text-custom"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="website-list.html" class="body-text-custom">Blogging App</a>
-                        </td>
-                        <td>
-                            <a href="website-edit.html" class="glyphicon glyphicon-cog pull-right body-text-custom"></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="website-list.html" class="body-text-custom">Script Testing App</a>
-                        </td>
-                        <td>
-                            <a href="website-edit.html" class="glyphicon glyphicon-cog pull-right body-text-custom"></a>
+                            <a href="#/user/{{model.id}}/website/{{website._id}}" class="glyphicon glyphicon-cog pull-right body-text-custom"></a>
                         </td>
                     </tr>
                     </tbody>
@@ -108,16 +73,16 @@
         </div>
         <div class="col-md-8 col-lg-8">
             <!--Body section that is always visible-->
-            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 body-row">
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 adjust">
                 <form>
                     <div class="form-group">
                         <label for="username">Name</label>
-                        <input type="text" class="form-control btn-block btn-lg" id="username"
+                        <input ng-model="model.website.name" type="text" class="form-control btn-block btn-lg" id="username"
                                placeholder="Website name">
                     </div>
                     <div class="form-group">
                         <label for="Description">Description</label>
-                        <textarea rows="4" class="form-control btn-block btn-lg" id="Description"
+                        <textarea ng-model="model.website.description" rows="4" class="form-control btn-block btn-lg" id="Description"
                                   placeholder="Enter website description"></textarea>
                     </div>
                 </form>
@@ -134,12 +99,10 @@
             </div>
             <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
                 <p class="navbar-text navbar-link pull-right">
-                    <a href="profile.html" class="navbar-text-custom glyphicon glyphicon-user">
+                    <a href="#/user/{{model.id}}" class="navbar-text-custom glyphicon glyphicon-user">
                     </a>
                 </p>
             </div>
         </div>
     </div>
 </nav>
-</body>
-</html>

@@ -1,39 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app='WebAppMaker'>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
-    <title>Login</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="services/user.service.client.js"></script>
+    <script src="services/page.service.client.js"></script>
+    <script src="services/website.service.client.js"></script>
+    <script src="services/widget.service.client.js"></script>
+    <script src="views/user/user.controller.client.js"></script>
+    <script src="views/page/page.controller.client.js"></script>
+    <script src="views/website/website.controller.client.js"></script>
+    <script src="views/widget/widget.controller.client.js"></script>
+    <title>WebAppMaker</title>
+
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3">
-            <div class="page-header">
-                <h2>Login</h2>
-            </div>
-            <input placeholder="username"
-                   type="text"
-                   class="form-control btn-block btn-lg"
-                   name="username"/>
-            <input
-                    placeholder="password"
-                    type="password"
-                    class="form-control btn-block btn-lg"
-                    name="password"/>
-            <br>
-            <a href="profile.html"
-               class="btn btn-primary btn-block btn-lg">
-                Login
-            </a>
-            <a href="register.html"
-               class="btn btn-success btn-block btn-lg">
-                Register
-            </a>
+        <div ng-view>
+
         </div>
-    </div>
+
 </div>
 </body>
 </html>

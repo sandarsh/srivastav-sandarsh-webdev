@@ -1,5 +1,5 @@
 body{
-    margin-top: 50px;
+    margin-top: 60px;
     margin-bottom: 70px;
 }
 .navbar-default{
@@ -156,3 +156,11 @@ tr {
 .img-center{
     text-align: center;
 }
+.glyphicon-cog:before {
+    content: "\e019";
+    padding-right: 0px;
+}
+.right-cog{
+    padding-top: 15px;
+}
+

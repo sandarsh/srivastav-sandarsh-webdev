@@ -1,39 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
-</head>
-<body>
 <div class="container">
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 col-lg-offset-3 col-md-offset-3">
             <div class="page-header">
                 <h2>Register</h2>
             </div>
+            <div ng-show="model.error" class="alert alert-danger" role="alert">
+                {{model.error}}
+            </div>
             <form>
 
-                <input type="text"
+                <input ng-model = "model.user.username" type="text"
                        class="form-control btn-block btn-lg"
                        placeholder="username"/>
-                <input type="password"
+                <input ng-model = "model.user.password1" type="password"
                        class="form-control btn-block btn-lg"
                        placeholder="password"/>
-                <input type="password"
+                <input ng-model = "model.user.password2" type="password"
                        class="form-control btn-block btn-lg"
                        placeholder="verify password"/>
             </form>
             <br>
-            <a class="btn btn-primary btn-block btn-lg"
-               href="profile.html">Register</a>
+            <a ng-click="model.register(model.user.username, model.user.password1, model.user.password2)" class="btn btn-primary btn-block btn-lg">Register</a>
             <a class="btn btn-danger  btn-block btn-lg"
-               href="login.html">Cancel</a>
+               href="#/">Cancel</a>
 
         </div>
     </div>
 </div>
-</body>
-</html>
