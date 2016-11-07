@@ -12,7 +12,7 @@
             </div>
             <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
                 <p class="navbar-text navbar-link pull-right">
-                    <a ng-click="model.updateUser(model.id, model.username, model.email, model.firstname, model.lastname)" class="navbar-text-custom glyphicon glyphicon-ok">
+                    <a ng-click="model.updateUser()" class="navbar-text-custom glyphicon glyphicon-ok">
                     </a>
                 </p>
             </div>
@@ -26,7 +26,7 @@
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input ng-model = "model.username" type="text" class="form-control btn-block btn-lg" id="username"
-                           placeholder="alice">
+                           placeholder="alice" readonly="readonly">
                 </div>
                 <div class="form-group">
                     <label for="email">Email address</label>
@@ -47,6 +47,8 @@
                href="#/user/{{model.id}}/website">Websites</a>
             <a class="btn btn-danger btn-block btn-lg"
                href="#/">Logout</a>
+            <a class="btn btn-warning btn-block btn-lg" ng-click="model.deleteUser(model.id)"
+               href="#/">Delete Account</a>
         </div>
     </div>
 </div>

@@ -1,6 +1,3 @@
-/**
- * Created by sandarshsrivastav on 16/10/16.
- */
 (function(){
     angular
         .module("WebAppMaker")
@@ -13,7 +10,19 @@
         vm.id = $routeParams.uid;
         vm.wid = $routeParams.wid;
         vm.pid = $routeParams.pid;
-        vm.widgets = WidgetService.findWidgetsByPageId(vm.pid);
+        // var widgets = $(".wam-widgets").sortable({
+        //     axis:'y'
+        // });
+        var findWidgetsPromise = WidgetService.findWidgetsByPageId(vm.pid);
+        findWidgetsPromise
+            .success(function(widgets){
+                console.log(widgets);
+                vm.widgets = widgets;
+            })
+            .error(function(){
+                console.log("Server error in fetching widgets");
+            });
+
         //console.log(vm.widgets);
         vm.checkSafeHtml = checkSafeHtml;
         vm.transform = transform;
@@ -32,7 +41,12 @@
             return $sce.trustAsResourceUrl(prefix);
 
         }
+
     }
+
+
+
+
 
 
 
@@ -45,30 +59,34 @@
         vm.page = "views/widget/widget-" + widgetType + ".view.client.html";
         //var type = $routeParams.type;
         vm.addWidget = addWidget;
+        var wgid = ((new Date().getTime() % 1000).toString());
 
         function addWidget(name,text,size,url,width){
-            var id = ((new Date().getTime() % 1000).toString());
+            var widget = {};
             switch(widgetType){
                 case "header":
-                    var widget = {"_id" : id, "size":size, "text":text,"widgetType": "HEADER", "name":name};
-                    WidgetService.createWidget(vm.pid,widget);
+                    widget = {"_id" : wgid, "size":size, "text":text,"widgetType": "HEADER", "name":name};
                     break;
                 case "youtube":
                     //console.log("switch ran");
-                    var widget = {"_id" : id, "width":width, "text":text,"widgetType": "YOUTUBE", "name":name, "url":url};
-                    WidgetService.createWidget(vm.pid,widget);
+                    widget = {"_id" : wgid, "width":width, "text":text,"widgetType": "YOUTUBE", "name":name, "url":url};
                     break;
                 case "html":
-                    var widget = {"_id" : id, "size":size, "text":text,"widgetType": "HTML", "name":name};
-                    WidgetService.createWidget(vm.pid,widget);
+                    widget = {"_id" : wgid, "size":size, "text":text,"widgetType": "HTML", "name":name};
                     break;
                 case "image":
-                    var widget = {"_id" : id, "width":width, "text":text,"widgetType": "IMAGE", "name":name, "url":url};
-                    WidgetService.createWidget(vm.pid,widget);
+                    widget = {"_id" : wgid, "width":width, "text":text,"widgetType": "IMAGE", "name":name, "url":url};
                     break;
 
             }
-
+            var createWidgetPromise = WidgetService.createWidget(vm.pid,widget);
+            createWidgetPromise
+                .success(function(widget){
+                    console.log(widget);
+                })
+                .error(function(){
+                    console.log("Error in widget creation!");
+            });
         }
     }
 
@@ -77,49 +95,72 @@
 
 
 
+
     function EditWidgetController($routeParams, WidgetService){
         var vm = this;
-        var widget = WidgetService.findWidgetById($routeParams.wgid);
-        var widgetType = widget.widgetType;
-        vm.updateWidget = updateWidget;
+        var findWidgetPromise = WidgetService.findWidgetById($routeParams.wgid);
         vm.deleteWidget = deleteWidget;
-        vm.id = $routeParams.uid;
-        vm.wid = $routeParams.wid;
-        vm.pid = $routeParams.pid;
-        vm.name = widget.name;
-        vm.text = widget.text;
-        vm.size = widget.size;
-        vm.url = widget.url;
-        vm.width = widget.width;
-        var wgid = $routeParams.wgid;
-        vm.page = "views/widget/widget-" + widgetType.toLowerCase() + ".view.client.html";
-        //console.log(wgid);
 
-        function updateWidget(name, text, size, url ,width){
-            //console.log(widgetType.toLowerCase());
-            switch(widgetType.toLowerCase()){
-                case "header":
-                    var widget = {"pageId" : vm.pid, "size":size, "text":text,"widgetType": widgetType, "name":name};
-                    WidgetService.updateWidget(wgid,widget);
-                    break;
-                case "youtube":
-                    //console.log("switch ran");
-                    var widget = {"pageId" : vm.pid, "width":width, "text":text,"widgetType": widgetType, "name":name, "url":url};
-                    WidgetService.updateWidget(wgid,widget);
-                    break;
-                case "html":
-                    var widget = {"pageId" : vm.pid, "size":size, "text":text,"widgetType": widgetType, "name":name};
-                    WidgetService.updateWidget(wgid,widget);
-                    break;
-                case "image":
-                    var widget = {"pageId" : vm.pid, "width":width, "text":text,"widgetType": widgetType, "name":name, "url":url};
-                    WidgetService.updateWidget(wgid,widget);
-                    break;
-
-            }
-        }
         function deleteWidget(){
-            WidgetService.deleteWidget(wgid);
+            var wgid = $routeParams.wgid;
+            var deleteWidgetPromise = WidgetService.deleteWidget(wgid);
+            deleteWidgetPromise
+                .success(function(widget){
+                    console.log(widget);
+                })
+                .error(function(){
+                    console.log("Could not delete widget");
+                });
         }
+
+        findWidgetPromise
+            .success(function(mywidget){
+                var widget = mywidget;
+                var widgetType = widget.widgetType;
+                vm.updateWidget = updateWidget;
+                vm.id = $routeParams.uid;
+                vm.wid = $routeParams.wid;
+                vm.pid = $routeParams.pid;
+                vm.name = widget.name;
+                vm.text = widget.text;
+                vm.size = widget.size;
+                vm.url = widget.url;
+                vm.width = widget.width;
+                var wgid = $routeParams.wgid;
+                vm.page = "views/widget/widget-" + widgetType.toLowerCase() + ".view.client.html";
+
+                function updateWidget(name, text, size, url ,width){
+                    //console.log(widgetType.toLowerCase());
+                    var widget = {}
+                    switch(widgetType.toLowerCase()){
+                        case "header":
+                            widget = {"pageId" : vm.pid, "size":size, "text":text,"widgetType": widgetType, "name":name};
+                            break;
+                        case "youtube":
+                            //console.log("switch ran");
+                            widget = {"pageId" : vm.pid, "width":width, "text":text,"widgetType": widgetType, "name":name, "url":url};
+                            break;
+                        case "html":
+                            widget = {"pageId" : vm.pid, "size":size, "text":text,"widgetType": widgetType, "name":name};
+                            break;
+                        case "image":
+                            widget = {"pageId" : vm.pid, "width":width, "text":text,"widgetType": widgetType, "name":name, "url":url};
+                            break;
+
+                    }
+                    var updateWidgetPromise = WidgetService.updateWidget(wgid,widget);
+                    updateWidgetPromise
+                        .success(function(widget){
+                            //console.log(widget);
+                        })
+                        .error(function(){
+                            console.log("Server error, widget could not be updated");
+                        });
+
+                }
+            })
+            .error(function(){
+                console.log("Error in find widget by id!!");
+            });
     }
 })();

@@ -12,49 +12,108 @@
         var vm = this;
         vm.id = $routeParams.uid;
         vm.wid = $routeParams.wid;
-        vm.pages = PageService.findPageByWebsiteId(vm.wid);
-        //console.log(vm.pages);
-
+        var pageListPromise = PageService.findPageByWebsiteId(vm.wid);
+        pageListPromise
+            .success(function(pages){
+                vm.pages = pages;
+            })
+            .error(function(){
+                console.log("Server error");
+            });
     }
+
+
+
+
 
     function NewPageController($routeParams, PageService){
         var vm = this;
         vm.id = $routeParams.uid;
         vm.wid = $routeParams.wid;
-        vm.pages = PageService.findPageByWebsiteId(vm.wid);
+        var pageListPromise = PageService.findPageByWebsiteId(vm.wid);
+        pageListPromise
+            .success(function(pages){
+                vm.pages = pages;
+            })
+            .error(function(){
+                console.log("Server error");
+            });
+
         vm.newPage = newPage;
         //console.log(vm.pages);
 
         function newPage(name, title){
             var id = ((new Date().getTime() % 1000).toString());
             var page = {"name":name, "title":title, _id:id};
-            PageService.createPage(vm.wid,page);
+            var createPagePromise = PageService.createPage(vm.wid,page);
+            createPagePromise
+                .success(function(page){
+                    console.log(page);
+                })
+                .error(function(){
+                    console.log("Server error in creating page");
+                });
         }
 
     }
+
+
+
+
+
+
+
 
     function EditPageController($routeParams, PageService){
         var vm = this;
         vm.id = $routeParams.uid;
         vm.wid = $routeParams.wid;
         vm.pid = $routeParams.pid;
-
         vm.editPage = editPage;
         vm.deletePage = deletePage;
 
-        var page = PageService.findPageById(vm.pid);
-        if(page!=null){
-            vm.name = page.name;
-            vm.title = page.title;
-        }
+
+
+        var pageByIdPromise = PageService.findPageById(vm.pid);
+        pageByIdPromise
+            .success(function(page){
+                if(page!="0"){
+                    vm.name = page.name;
+                    vm.title = page.title;
+                }
+            })
+            .error(function(){
+                console.log("Server error!");
+            });
+
 
         function editPage(name, title){
             var page = {"name":name, "title":title, "websiteId" : vm.wid};
-            PageService.updatePage(vm.pid,page);
+            var editPagePromise = PageService.updatePage(vm.pid,page);
+            editPagePromise
+                .success(function(page){
+                    console.log(page);
+                })
+                .error(function(){
+                    console.log("Server error");
+            });
         }
 
         function deletePage(){
-            PageService.deletePage(vm.pid);
+            var deletePagePromise = PageService.deletePage(vm.pid);
+            deletePagePromise
+                .success(function(page){
+                   console.log(page)
+                })
+                .error(function(){
+                    console.log("Could not delete page. Server error.")
+                });
         }
     }
+
+
+
+
+
+
 })();

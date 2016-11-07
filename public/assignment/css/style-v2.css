@@ -160,6 +160,10 @@ tr {
     content: "\e019";
     padding-right: 0px;
 }
+div.right-cog{
+    padding-right: 11px;
+}
+
 .right-cog{
     padding-top: 15px;
 }
