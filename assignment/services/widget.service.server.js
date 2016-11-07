@@ -61,20 +61,20 @@ module.exports = function(app){
         var upload = { "_id": widgetId, "widgetType": "IMAGE", "pageId": pid, "width": width,
             "url": url, "name": name, "text": text, "uploaded": true};
 
-        for(var w in widgets){
-            if(widgets[w]._id === widgetId){
-                if(widgets[w].uploaded === true) {
-                    fs.unlink(__dirname + '/../../public/' + widgets[w].url, function (err) {
-                        if (err) throw err;
-                        //console.log('successfully deleted ' + widgets[w].url);
-                    });
-                }
-                widgets.splice(w,1,upload);
-                res.status(200);
-                res.redirect("/assignment"+resurl);
-                return;
-            }
-        }
+        // for(var w in widgets){
+        //     if(widgets[w]._id === widgetId){
+        //         if(widgets[w].uploaded === true) {
+        //             fs.unlink(__dirname + '/../../public/' + widgets[w].url, function (err) {
+        //                 if (err) throw err;
+        //                 //console.log('successfully deleted ' + widgets[w].url);
+        //             });
+        //         }
+        //         widgets.splice(w,1,upload);
+        //         res.status(200);
+        //         res.redirect("/assignment"+resurl);
+        //         return;
+        //     }
+        // }
         widgets.push(upload);
         //console.log(resurl);
         res.status(200);
