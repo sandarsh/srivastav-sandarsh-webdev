@@ -38,7 +38,16 @@
                     </div>
                 </div>
             </div>
-
+            <div ng-switch-when="TEXT">
+                <div ng-if="widget.formatted" text-angular ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]"></div>
+                <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
+                       placeholder="{{widget.placeholder}}" class="form-control"/>
+                <textarea ng-if="!widget.formatted && (widget.rows > 1)"
+                          rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                          class="form-control">{{widget.text}}</textarea>
+            </div>
             <div ng-switch-when="IMAGE">
                 <div class="row">
                     <div class="parent jumbotron">
@@ -60,7 +69,7 @@
             <div ng-switch-when="YOUTUBE">
                 <div class="row">
                     <div class="parent jumbotron">
-                        <div class="embed-responsive embed-responsive-4by3">
+                        <div class="embed-responsive embed-responsive-16by9">
                             <iframe class="embed-responsive-item" ng-src="{{model.transform(widget.url)}}">
                             </iframe>
                         </div>

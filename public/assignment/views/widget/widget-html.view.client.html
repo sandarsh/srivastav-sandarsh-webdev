@@ -2,9 +2,9 @@
     <label for="page-name">Name</label>
     <input ng-model = "model.name" type="text" class="form-control btn-lg btn-block" id="page-name" placeholder="widget name">
 </div>
-<div class="form-group">
+
+<div class="form-group" ng-model="model.text" text-angular ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'], ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'], ['indent','outdent'],['html']]">
     <label for="page-title">Text</label>
-    <input ng-model = "model.text" type="text" class="form-control btn-lg btn-block" id="page-title" placeholder="widget text">
 </div>
 <div class="form-group">
     <label for="page-title">Size</label>

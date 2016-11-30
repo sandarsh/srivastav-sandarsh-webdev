@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("WidgetListController",WidgetListController)
         .controller("NewWidgetController",NewWidgetController)
-        .controller("EditWidgetController",EditWidgetController)
+        .controller("EditWidgetController",EditWidgetController);
 
     function WidgetListController($routeParams, WidgetService, $sce){
         var vm = this;
@@ -59,23 +59,25 @@
         vm.page = "views/widget/widget-" + widgetType + ".view.client.html";
         //var type = $routeParams.type;
         vm.addWidget = addWidget;
-        var wgid = ((new Date().getTime() % 1000).toString());
 
-        function addWidget(name,text,size,url,width){
+        function addWidget(name,text,size,url,width, rows, placeholder, formatted){
             var widget = {};
             switch(widgetType){
                 case "header":
-                    widget = {"_id" : wgid, "size":size, "text":text,"widgetType": "HEADER", "name":name};
+                    widget = {"size":size, "text":text,"widgetType": "HEADER", "name":name};
                     break;
                 case "youtube":
                     //console.log("switch ran");
-                    widget = {"_id" : wgid, "width":width, "text":text,"widgetType": "YOUTUBE", "name":name, "url":url};
+                    widget = {"width":width, "text":text,"widgetType": "YOUTUBE", "name":name, "url":url};
                     break;
                 case "html":
-                    widget = {"_id" : wgid, "size":size, "text":text,"widgetType": "HTML", "name":name};
+                    widget = {"size":size, "text":text,"widgetType": "HTML", "name":name};
                     break;
                 case "image":
-                    widget = {"_id" : wgid, "width":width, "text":text,"widgetType": "IMAGE", "name":name, "url":url};
+                    widget = {"width":width, "text":text,"widgetType": "IMAGE", "name":name, "url":url};
+                    break;
+                case "text":
+                    widget = {"width":width, "text":text,"widgetType": "TEXT", "name":name, "url":url, "rows" : rows, "placeholder" : placeholder, "formatted" : formatted};
                     break;
 
             }
@@ -126,10 +128,13 @@
                 vm.size = widget.size;
                 vm.url = widget.url;
                 vm.width = widget.width;
+                vm.placeholder = widget.placeholder;
+                vm.rows = widget.rows;
+                vm.formatted = widget.formatted;
                 var wgid = $routeParams.wgid;
                 vm.page = "views/widget/widget-" + widgetType.toLowerCase() + ".view.client.html";
 
-                function updateWidget(name, text, size, url ,width){
+                function updateWidget(name, text, size, url ,width, rows, placeholder, formatted){
                     //console.log(widgetType.toLowerCase());
                     var widget = {}
                     switch(widgetType.toLowerCase()){
@@ -146,7 +151,9 @@
                         case "image":
                             widget = {"pageId" : vm.pid, "width":width, "text":text,"widgetType": widgetType, "name":name, "url":url};
                             break;
-
+                        case "text":
+                            widget = {"pageId" : vm.pid, "width":width, "text":text,"widgetType": widgetType, "name":name, "url":url,"rows" : rows, "placeholder" : placeholder, "formatted" : formatted};
+                            break;
                     }
                     var updateWidgetPromise = WidgetService.updateWidget(wgid,widget);
                     updateWidgetPromise

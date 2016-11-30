@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="css/style-v2.css">
+<link rel="stylesheet" href="css/textAngular.css">
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
@@ -11,7 +13,7 @@
     </span>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-            <a href="#/user/{{model.id}}/website/{{model.wid}}/page/{{model.pid}}/widget" ng-click="model.updateWidget(model.name, model.text, model.size, model.url, model.width)" class="glyphicon glyphicon-ok navbar-text pull-right">
+            <a href="#/user/{{model.id}}/website/{{model.wid}}/page/{{model.pid}}/widget" ng-click="model.updateWidget(model.name, model.text, model.size, model.url, model.width, model.rows, model.placeholder, model.formatted)" class="glyphicon glyphicon-ok navbar-text pull-right">
             </a>
         </div>
     </div>

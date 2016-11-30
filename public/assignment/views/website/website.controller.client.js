@@ -41,7 +41,7 @@
 
         function newWebsite(id, name, description){
             var website = {"name" : name, "description":description};
-            website._id = ((new Date().getTime() % 1000).toString());
+            // website._id = ((new Date().getTime() % 1000).toString());
             var createPromise = WebsiteService.createWebsite(id, website);
             createPromise
                 .success(function(website){
@@ -87,7 +87,7 @@
 
 
         function editWebsite(name, description, developerId){
-            var website = {"name" : name, "description": description, "developerId": developerId};
+            var website = {"name" : name, "description": description};
             var updatePromise = WebsiteService.updateWebsite(siteId,website);
             updatePromise
                 .success(function(website){

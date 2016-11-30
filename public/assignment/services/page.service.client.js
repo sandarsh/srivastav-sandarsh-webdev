@@ -1,6 +1,3 @@
-/**
- * Created by sandarshsrivastav on 12/10/16.
- */
 (function(){
     angular
         .module("WebAppMaker")
@@ -34,7 +31,6 @@
         }
 
         function updatePage(pageId, page){
-            page._id = pageId;
             var url = "/api/page/" + pageId;
             return $http.put(url, page);
         }

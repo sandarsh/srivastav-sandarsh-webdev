@@ -23,9 +23,6 @@
     }
 
 
-
-
-
     function NewPageController($routeParams, PageService){
         var vm = this;
         vm.id = $routeParams.uid;
@@ -43,8 +40,8 @@
         //console.log(vm.pages);
 
         function newPage(name, title){
-            var id = ((new Date().getTime() % 1000).toString());
-            var page = {"name":name, "title":title, _id:id};
+            // var id = ((new Date().getTime() % 1000).toString());
+            var page = {"name":name, "title":title};
             var createPagePromise = PageService.createPage(vm.wid,page);
             createPagePromise
                 .success(function(page){
@@ -88,7 +85,7 @@
 
 
         function editPage(name, title){
-            var page = {"name":name, "title":title, "websiteId" : vm.wid};
+            var page = {"name":name, "title":title};
             var editPagePromise = PageService.updatePage(vm.pid,page);
             editPagePromise
                 .success(function(page){

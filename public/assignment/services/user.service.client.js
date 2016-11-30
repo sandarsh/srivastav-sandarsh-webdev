@@ -15,8 +15,8 @@
         return api;
 
         function createUser(user){
-            var id = ((new Date().getTime() % 1000).toString());
-            user._id = id;
+            // var id = ((new Date().getTime() % 1000).toString());
+            // user._id = id;
             var url = '/api/user';
             return $http.post(url, user);
         }

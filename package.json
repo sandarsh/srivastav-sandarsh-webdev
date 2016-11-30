@@ -9,8 +9,9 @@
     "fs": "0.0.1-security",
     "jquery": "^3.1.1",
     "jquery-ui": "^1.12.1",
-    "mongoose": "^4.4.15",
-    "multer": "^1.2.0"
+    "mongoose": "^4.7.0",
+    "multer": "^1.2.0",
+    "textangular": "^1.5.13"
   },
   "devDependencies": {},
   "scripts": {

@@ -42,6 +42,7 @@
                             var promise = UserService.createUser(entry);
                             promise
                                 .success(function (user) {
+                                    // console.log(user);
                                     $location.url("/user/" + user._id);
                                 })
                                 .error(function () {
@@ -54,7 +55,7 @@
                         }
                     })
                     .error(function(){
-                        console.log("500 interal server error");
+                        console.log("500 internal server error");
                     });
             }
             else{
@@ -94,6 +95,7 @@
             user.email = vm.email;
             user.firstName = vm.firstname;
             user.lastName = vm.lastname;
+            console.log(user);
             var updatePromise = UserService.updateUser(user);
             updatePromise
                 .success(function(id){
