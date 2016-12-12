@@ -10,7 +10,9 @@
         vm.login = login;
 
         function login(username,password) {
-            var promise = UserService.findUserByCredentials(username,password);
+            // var promise = UserService.findUserByCredentials(username,password);
+            console.log(username, password);
+            var promise = UserService.login(username, password);
             promise
                 .success(function(user){
                     if (user!="0"){
@@ -64,12 +66,14 @@
         }
     }
 
-    function ProfileController($routeParams, UserService){
+    function ProfileController($routeParams, UserService, $location){
         var vm = this;
         var id = $routeParams.uid;
         vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
-        var promise = UserService.findUserById(id);
+        vm.logout = logout;
+        // var promise = UserService.findUserById(id);
+        var promise = UserService.findCurrentUser();
         promise
             .success(function(user){
                 vm.user = user;
@@ -89,6 +93,18 @@
                 vm.error = "404 not found";
             });
 
+
+
+
+
+
+        function logout(){
+            UserService
+                .logout()
+                .success(function(){
+                    $location.url("/");
+            })
+        }
 
         function updateUser(){
             var user = vm.user;

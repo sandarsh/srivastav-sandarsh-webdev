@@ -5,14 +5,48 @@
     function UserService($http){
 
         var api = {
+            checkLogin : checkLogin,
+            login : login,
             createUser : createUser,
             findUserById : findUserById,
             findUserByUsername : findUserByUsername,
             findUserByCredentials : findUserByCredentials,
             updateUser : updateUser,
-            deleteUser : deleteUser
+            deleteUser : deleteUser,
+            logout: logout,
+            findCurrentUser: findCurrentUser
         };
         return api;
+
+
+        function findCurrentUser() {
+            return $http.get("/api/user");
+
+        }
+
+
+
+        function logout(){
+            return $http.post("/api/logout");
+        }
+
+
+        function checkLogin(){
+            return $http.post("/api/checkLogin");
+        }
+
+
+        function login(username, password){
+
+            var user = {
+                username : username,
+                password : password
+            };
+            console.log(user);
+            var url = '/api/login';
+            return $http.post(url, user);
+        }
+
 
         function createUser(user){
             // var id = ((new Date().getTime() % 1000).toString());

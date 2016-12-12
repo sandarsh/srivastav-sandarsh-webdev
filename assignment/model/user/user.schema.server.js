@@ -8,6 +8,14 @@ module.exports = function () {
         lastName : String,
         email : String,
         phone : Number,
+        google: {
+            token: String,
+            id: String
+        },
+        facebook: {
+            token: String,
+            id: String
+        },
         websites : [{type : mongoose.Schema.Types.ObjectId , ref : 'WebsiteModel'}],
         dateCreated : Date
     },{collection : "user"});
