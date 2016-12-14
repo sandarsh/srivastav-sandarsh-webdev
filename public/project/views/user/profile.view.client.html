@@ -1,19 +1,93 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand active">eMarketeer</a>
 
-<div>
-    <h1>
-        This is the profile page!
-    </h1>
-    <h4>
-        Username<br>
-        Manage Password<br>
-        Location (Discover)<br>
-        First Name<br>
-        Last Name<br>
-        Address<br>
-        Phone Number (Button to make visible to all users)<br>
-        <br>
-        Username<br>
-        Username<br>
-        Username<br>
-    </h4>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#/user/{{model.user._id}}/search" class="btn btn-block">Search Item</a></li>
+                <li><a href="#/user/{{model.user._id}}/sell" class="btn btn-block">Sell Item</a></li>
+                <li><a href="#/user/{{model.user._id}}/social" class="btn btn-block">Search User</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="btn btn-block" ng-click="model.logout()">Logout</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div>
+</nav>
+
+<!--<nav class="navbar navbar-default navbar-fixed-top">-->
+        <!--<div class="navbar-header">-->
+            <!--<div class="container-fluid">-->
+
+                <!--<a class="navbar-brand">-->
+                    <!--Profile-->
+                <!--</a>-->
+                <!--<div class="navbar-text pull-right">-->
+                    <!--<a ng-click="model.updateUser()" class="navbar-link">-->
+                        <!--<span class="glyphicon glyphicon-ok"></span>-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+<!--</nav>-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <img class="user-image" ng-src="{{model.user.dpURL}}">
+            <form action="/api/upload/dp" method="post" enctype="multipart/form-data">
+                <input  name="myFile"   type="file" class="form-control"/>
+                <input  name="uid" value="{{model.uid}}"   style="display: none"/>
+                <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+            </form>
+            <br>
+            <a href="#/user/{{model.uid}}/social/follow/{{model.following}}" class="btn btn-block btn-primary">Following  <span class="badge">{{model.followingNum}}</span></a>
+            <a href="#/user/{{model.uid}}/social/follow/{{model.followers}}" class="btn btn-block btn-primary">Followers  <span class="badge">{{model.followersNum}}</span></a>
+            <br>
+            <a href="#/user/{{model.uid}}/details/item/list/{{model.cart}}" class="btn btn-block btn-primary">My Cart  <span class="badge">{{model.cartNum}}</span></a>
+            <a href="#/user/{{model.uid}}/details/item/list/{{model.history}}" class="btn btn-block btn-primary">History</a>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input ng-model="model.user.username" type="text" class="form-control" id="username" placeholder="Username" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input ng-model="model.user.email" type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
+                </div>
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input ng-model="model.user.first" type="text" class="form-control" id="first-name" placeholder="Alice">
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input ng-model="model.user.last" type="text" class="form-control" id="last-name" placeholder="Wonderland">
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Phone</label>
+                    <input ng-model="model.user.phone" type="text" class="form-control" id="phone" placeholder="(000) 111-2222">
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Address</label>
+                    <textarea ng-model="model.user.address" type="text" class="form-control" id="address" placeholder="Address"/>
+                </div>
+
+            </form>
+
+            <a class="btn btn-success btn-block" ng-click="model.updateUser()">Save</a>
+            <a class="btn btn-primary btn-block" href="#/admin" ng-show="model.user.role == 'ADMIN'">Admin</a>
+            <a class="btn btn-danger btn-block" ng-click="model.unregisterUser()">Unregister</a>
+
+        </div>
+    </div>
 </div>

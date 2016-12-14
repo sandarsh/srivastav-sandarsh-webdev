@@ -1,11 +1,92 @@
+<div class="container jumbotron">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <br>
+            <div class="site-title"><img src="title.png"></div>
+            <br>
+            <h3>Buy, sell and discover new and used items...</h3>
+            <br>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li> 
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
+                </ol>
 
-<div>
-    <h1>
-        This is the login page!
-    </h1>
-    <h4>
-        google
-        <br/>
-        facebook
-    </h4>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img src="http://www.homedecorators.com/images/media2/tier_images/category/img/outdoor_funiture.jpg" alt="image">
+                    </div>
+
+                    <div class="item">
+                        <img src="https://i0.wp.com/www.computertrickstips.com/wp-content/uploads/2016/05/best-laptops-under-35000-rupee.jpg?resize=700%2C300" alt="image">
+                    </div>
+
+                    <div class="item">
+                        <img src="http://www.myuniyoung.com/uytitemsadd/pslide/iMac214.jpg" alt="Flower">
+                    </div>
+                    <div class="item">
+                        <img src="http://i0.wp.com/littlemisshoney.com/wp-content/uploads/2015/07/IMG_7161-e1435841695184.jpg?resize=700%2C300" alt="Flower">
+                    </div>
+                    <div class="item">
+                        <img src="http://rohinishops.com/admin/img/1404132533726094.jpg" alt="Flower">
+                    </div>
+
+                </div>
+
+                <!-- Left and right controls -->
+            </div>
+
+
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <h2>Login</h2>
+
+    <div ng-show="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
+    <form>
+        <div class="form-group">
+            <label for="username"><h4>Username</h4></label>
+            <input type="text"
+                   ng-model="model.username"
+                   class="form-control"
+                   id="username"
+                   placeholder="alice1"/>
+
+            <label for="password"><h4>Password</h4></label>
+            <input ng-enter="model.login(model.username, model.password)"
+                   type="password"
+                   ng-model="model.password"
+                   class="form-control"
+                   id="password"
+                   placeholder="XYZ123"/><br>
+
+            <a ng-click="model.login(model.username, model.password)"
+               class="btn btn-primary btn-block btn-lg">
+                Login
+            </a><br>
+            <a class="btn btn-success btn-block btn-lg" href="#/register">
+                Register
+            </a><br>
+            <a href="/auth/google" class="btn btn-danger btn-block btn-lg">
+                <span class="fa fa-google-plus"></span><!--font awesome-->
+                Google
+            </a><br>
+            <a href="#" class="btn btn-blue btn-block btn-lg">
+                <span class="fa fa-facebook"></span><!--font awesome-->
+                Facebook
+            </a>
+        </div>
+    </form>
 </div>
+    </div>
+</div>
+<div><span class="btn btn-primary btn-block btn-signature">
+    Developed by : Shreyes Khurana / Sandarsh Srivastav</span></div>

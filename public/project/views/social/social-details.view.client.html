@@ -1,0 +1,105 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">eMarketeer</a>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#/user/{{model.uid}}/search" class="btn btn-block">Search Item</a></li>
+                <li><a href="#/user/{{model.uid}}/sell" class="btn btn-block">Sell Item</a></li>
+                <li><a href="#/user/{{model.uid}}/social" class="btn btn-block">Search User</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/login" class="btn btn-block" ng-click="model.logout()">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<!--<nav class="navbar navbar-default navbar-fixed-top">-->
+    <!--<div class="row">-->
+        <!--<div class="navbar-header">-->
+            <!--<div class="container-fluid">-->
+                <!--<p class="navbar-text pull-left">-->
+                    <!--<a href="#/user/{{model.uid}}/social"-->
+                       <!--class="navbar-link">-->
+                        <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+                    <!--</a>-->
+                <!--</p>-->
+                <!--<a class="navbar-brand">-->
+                    <!--User Details-->
+                <!--</a>-->
+                <!--<p class="navbar-text pull-right">-->
+                    <!--&lt;!&ndash;<a href=""&ndash;&gt;-->
+                       <!--&lt;!&ndash;class="navbar-link">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span class="glyphicon glyphicon-plus"></span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
+
+<div ng-show="model.followStatus" class="alert alert-success" role="alert">
+    You are now following the user!
+</div>
+
+<div class="container-fluid">
+    <div class="row container">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <img class="listing-image" src="{{model.user.dpURL}}" width="400px">
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="container">
+                <h2>{{model.user.first}} {{model.user.last}}</h2><br>
+                <h4>
+                    Email : {{model.user.email}} <br>
+                </h4>
+                <h4>
+                    Phone : {{model.user.phone}}<br>
+                </h4>
+                <h4>
+                    Username : {{model.user.username}} <br>
+                </h4>
+                <h4>
+                    Address : {{model.user.address}} <br>
+                </h4>
+                <br>
+                <span class="input-group-btn">
+                <button ng-click="model.followUser()" class="btn btn-default" type="button">{{model.isFollowing}}</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <span class="input-group-btn">
+
+    </span>
+
+</div>
+
+
+<div class="container">
+    <div>
+        <a href="#/user/{{model.uid}}/social" class="btn btn-info btn-circle-left btn-lg"><i class="glyphicon glyphicon-chevron-left"></i></a>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div>
+        <a href="#/user/{{model.uid}}" class="btn btn-info btn-circle btn-lg"><i class="glyphicon glyphicon-user"></i></a>
+    </div>
+
+</div>

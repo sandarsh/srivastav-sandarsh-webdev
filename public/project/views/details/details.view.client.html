@@ -1,0 +1,83 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">eMarketeer</a>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#/user/{{model.uid}}/search" class="btn btn-block">Search Item</a></li>
+                <li><a href="#/user/{{model.uid}}/sell" class="btn btn-block">Sell Item</a></li>
+                <li><a href="#/user/{{model.uid}}/social" class="btn btn-block">Search User</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/login" class="btn btn-block" ng-click="model.logout()">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div ng-show="model.itemStatus" class="alert alert-danger" role="alert">
+    Item added to cart!
+</div>
+<div class="row container">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <img class="listing-image" src="{{model.item.pictureURL}}">
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="container">
+            <h2>{{model.item.name}}</h2><br>
+            <h4>
+                Condition : {{model.item.condition}} <br>
+            </h4>
+            <h4>
+                Category : {{model.item.category}}<br>
+            </h4>
+            <h4>
+                Country : {{model.item.country}} <br>
+            </h4>
+            <h4>
+                Price : USD. {{model.item.price}} <br>
+            </h4>
+            <h4>
+                Posted on: {{model.item.posted | date: 'mediumDate' : timezone}}
+            </h4>
+            <br>
+            <span class="input-group-btn">
+                <a href="{{model.item.url}}" class="btn btn-success" type="button"><h4> Buy on Ebay</h4></a>
+            </span>
+            <br>
+            <span class="input-group-btn">
+                <a ng-click="model.addToCart()" class="btn btn-warning" type="button"><h4> {{model.cartStatus}}</h4></a>
+            </span>
+        </div>
+    </div>
+
+    <div class="container col-lg-6 col-md-6 col-sm-12 col-xs-12 center-container">
+        <div class="iframe-container embed-responsive embed-responsive-4by3">
+            <div id="map">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <a href="#/user/{{model.uid}}/search/{{model.title}}" class="btn btn-info btn-circle-left btn-lg"><i class="glyphicon glyphicon-chevron-left"></i></a>
+    </div>
+</div>
+
+
+<div class="container">
+    <div>
+        <a href="#/user/{{model.uid}}" class="btn btn-info btn-circle btn-lg"><i class="glyphicon glyphicon-user"></i></a>
+    </div>
+</div>

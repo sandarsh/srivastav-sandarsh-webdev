@@ -21,9 +21,9 @@ module.exports = function(app, model){
     passport.deserializeUser(deserializeUser);
 
     var googleConfig = {
-        clientID        : process.env.GOOGLE_CLIENT_ID,
-        clientSecret    : process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL     : process.env.GOOGLE_CALLBACK_URL
+        clientID        : "143385841329-ulm42pfskodkjivvpcmddebl6ilmg8da.apps.googleusercontent.com",
+        clientSecret    : "0EFqz3SZ2Jea4zY6ymiK2RNJ",
+        callbackURL     : "http://localhost:3000/auth/google/callback"
     };
 
     passport.use(new GoogleStrategy(googleConfig, googleStrategy));
@@ -45,9 +45,9 @@ module.exports = function(app, model){
 
 
     var facebookConfig = {
-        clientID        : process.env.FACEBOOK_CLIENT_ID,
-        clientSecret    : process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL     : process.env.FACEBOOK_CALLBACK_URL
+        clientID        : "1869180686645152",
+        clientSecret    : "fa1fcbaec6d05649c30e0fe10be9e348",
+        callbackURL     : "http://localhost:3000/auth/facebook/callback"
     };
 
     passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));

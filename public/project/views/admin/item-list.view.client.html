@@ -1,0 +1,95 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">eMarketeer</a>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#/user/{{model.uid}}/search" class="btn btn-block">Search Item</a></li>
+                <li><a href="#/user/{{model.uid}}/sell" class="btn btn-block">Sell Item</a></li>
+                <li><a href="#/user/{{model.uid}}/social" class="btn btn-block">Search User</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/login" class="btn btn-block" ng-click="model.logout()">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+
+<!--<nav class="navbar navbar-default navbar-fixed-top">-->
+    <!--<div class="row">-->
+        <!--<div class="navbar-header">-->
+            <!--<div class="container-fluid">-->
+                <!--<p class="navbar-text pull-left">-->
+                    <!--<a href="#/admin"-->
+                       <!--class="navbar-link">-->
+                        <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+                    <!--</a>-->
+                <!--</p>-->
+                <!--<a class="navbar-brand">-->
+                    <!--Social-->
+                <!--</a>-->
+                <!--<p class="navbar-text pull-right">-->
+                    <!--<a href=""-->
+                       <!--class="navbar-link">-->
+                        <!--<span class="glyphicon glyphicon-plus"></span>-->
+                    <!--</a>-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
+
+<div infinite-scroll="model.addUsersToList()" infinite-scroll-distance="1" style="position: relative">
+    <div ng-repeat="item in model.viewItems" align="center">
+        <div class="col-sm-6 col-md-4 col-lg-3 col-xs-12">
+            <div class="thumbnail thumbnail-col">
+                <div class="p-4">
+                    <img ng-src="{{item.galleryURL}}">
+                    <div class="caption">
+                        {{item.name}}
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        USD ${{item.price}}
+                        <a ng-click="model.getDetails(item)"
+                           class="btn btn-primary btn-block center-block details-button"
+                           role="button">Edit/View
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <a href="#/admin" class="btn btn-info btn-circle-left btn-lg"><i class="glyphicon glyphicon-chevron-left"></i></a>
+    </div>
+</div>
+
+
+<div class="container">
+    <div>
+        <a href="#/user/{{model.uid}}" type="button" class="btn btn-info btn-circle btn-lg"><i class="glyphicon glyphicon-user"></i></a>
+    </div>
+
+</div>
+
+
+
