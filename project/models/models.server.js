@@ -1,5 +1,6 @@
 module.exports = function() {
-    var connectionString = 'mongodb://127.0.0.1:27017/WebAppMaker';
+    // var connectionString = 'mongodb://127.0.0.1:27017/WebAppMaker';
+    var connectionString = 'mongodb://127.0.0.1:27017/dummyDB';
 
     var mongoose = require("mongoose");     //npm install mongoose --save
     mongoose.connect(connectionString);     //connecting to a database

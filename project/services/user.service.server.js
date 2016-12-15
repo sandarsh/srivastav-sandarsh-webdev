@@ -4,9 +4,15 @@ module.exports = function(app, model) {
     var fs = require('fs');
     var passport      = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
-    //var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+    var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
     var cookieParser  = require('cookie-parser');
     var session       = require('express-session');
+
+    var googleConfig = {
+        clientID     : "1024301427866-9kl9a4ui9985tspjv671sdm27bes7o1h.apps.googleusercontent.com",        //public key
+        clientSecret : "zxrS4jX4GZLPDC1-QWGzO7Ak",    //private key
+        callbackURL  : "http://localhost:3000/auth/google/webdevproj/callback"     //what url would be listening once we get a callback
+    };
 
     app.use(session({                   //configure raw session
         secret: 'this is the secret',
@@ -20,7 +26,7 @@ module.exports = function(app, model) {
     passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
-    //passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+    passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 
     app.post('/api/login', passport.authenticate('local'), login);
     app.post('/api/checkLogin', checkLogin);
@@ -34,21 +40,17 @@ module.exports = function(app, model) {
     app.delete('/api/user/:uid', loggedInAndSelf, unregisterUser);
     app.post ("/api/upload/dp", upload.single('myFile'), uploadDisplayPicture);
 
-    /*app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
-     app.get('/auth/google/callback',
+    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+     app.get('/auth/google/webdevproj/callback',
      passport.authenticate('google', {
-     successRedirect: '/assignment/#/user',
-     failureRedirect: '/assignment/#/login'
-     })); */
+     successRedirect: '/project/#/user',
+     failureRedirect: '/project/#/login'
+     }));
 
-    /*var googleConfig = {
-     clientID     : process.env.GOOGLE_CLIENT_ID,        //public key
-     clientSecret : process.env.GOOGLE_CLIENT_SECRET,    //private key
-     callbackURL  : process.env.GOOGLE_CALLBACK_URL      //what url would be listening once we get a callback
-     };//make process env variables using bash profile exports/bash/*/
+    //make process env variables using bash profile exports/bash/
 
 
-    /*function googleStrategy(token, refreshToken, profile, done) {
+    function googleStrategy(token, refreshToken, profile, done) {
      model
      .userModel
      .findUserByGoogleId(profile.id)
@@ -87,7 +89,7 @@ module.exports = function(app, model) {
      if (err) { return done(err); }
      }
      );
-     }*/
+     }
 
     function localStrategy(username, password, done) {  //expects the post already has username and pass in body
         model                                   //used as a return parameter (function)
